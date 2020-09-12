@@ -24,8 +24,18 @@ const listBooks = (request, response)=>{
 const createBooks = (request,response)=>{
     const book = request.body
     console.log('Book: ',book)
-    return response.status(201).send({message: "Livro cadastrado com sucesso! =)"})
+    if(book.name && book.author && book.id){
+        return response.status(201).send({message: "Livro cadastrado com sucesso! =)"})
+    } else{
+        return response.status(400).send({message: "Falta enviar o body corretamente..."})
+    }
+}
+
+const deleteBooks = (request,response)=>{
+    const id = request.params.id
+    console.log('id',id)
 }
 
 app.get('/book',listBooks)
 app.post('/book',createBooks)
+app.delete('/book/:id',deleteBooks)
