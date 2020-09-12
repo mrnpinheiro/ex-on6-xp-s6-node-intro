@@ -34,8 +34,23 @@ const createBooks = (request,response)=>{
 const deleteBooks = (request,response)=>{
     const id = request.params.id
     console.log('id',id)
+    if(id){
+        return response.status(201).send({message: "Livro excluído."})
+    } else{
+        return response.status(400).send({message: "Faltou informar id na URL para exclusão."})
+    }
+}
+
+const updateBooks = (request,response)=>{
+    const id = request.params.id
+    if(id){
+        return response.status(201).send({message: "Livro atualizado."})
+    } else{
+        return response.status(400).send({message: "Faltou informar id na URL para atualização."})
+    }
 }
 
 app.get('/book',listBooks)
 app.post('/book',createBooks)
 app.delete('/book/:id',deleteBooks)
+app.put('/book/:id',updateBooks)
