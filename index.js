@@ -10,20 +10,22 @@ const listenFunction = () => console.log('Servidor funcionando: Hello =)')
 
 app.listen(PORT,listenFunction)
 
+const books = [
+    {
+        name: "Sophie's World",
+        author: "Jostein Gaarder",
+        id: 1
+    }
+]
+
 const listBooks = (request, response)=>{
-    const books = [
-        {
-            name: "Sophie's World",
-            author: "Jostein Gaarder",
-            id: 1
-        }
-    ]
     return response.status(200).send(books)
 }
 
 const createBooks = (request,response)=>{
     const book = request.body
     console.log('Book: ',book)
+    books.push(book)
     if(book.name && book.author && book.id){
         return response.status(201).send({message: "Livro cadastrado com sucesso! =)"})
     } else{
@@ -34,10 +36,18 @@ const createBooks = (request,response)=>{
 const deleteBooks = (request,response)=>{
     const id = request.params.id
     console.log('id',id)
-    if(id){
+    var isFoundBook = false
+    books.find((element,index)=>{
+        if(element.id == id){
+            isFoundBook = true
+            books.splice(index,1)
+        }
+    })
+
+    if(isFoundBook){
         return response.status(201).send({message: "Livro excluído."})
     } else{
-        return response.status(400).send({message: "Faltou informar id na URL para exclusão."})
+        return response.status(400).send({message: "Livro não encontrado."})
     }
 }
 
