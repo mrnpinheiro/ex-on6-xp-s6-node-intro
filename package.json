@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mrnpinheiro/ex-on6-xp-s6-node-intro#readme",
   "dependencies": {
+    "expres": "0.0.5",
     "express": "^4.17.1"
   }
 }
