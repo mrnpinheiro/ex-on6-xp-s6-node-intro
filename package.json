@@ -1,0 +1,22 @@
+{
+  "name": "ex-on6-xp-s6-node-intro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ex1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrnpinheiro/ex-on6-xp-s6-node-intro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrnpinheiro/ex-on6-xp-s6-node-intro/issues"
+  },
+  "homepage": "https://github.com/mrnpinheiro/ex-on6-xp-s6-node-intro#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
